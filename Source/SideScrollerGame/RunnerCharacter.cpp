@@ -42,6 +42,7 @@ void ARunnerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	CanMove = true;
 }
 
 // Called every frame
@@ -56,10 +57,16 @@ void ARunnerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+
+	PlayerInputComponent->BindAxis("MoveRight", this, &ARunnerCharacter::MoveRight);
 }
 
 void ARunnerCharacter::MoveRight(float value)
 {
+	if(CanMove)
+		AddMovementInput(FVector(0.0f, 1.0f, 0.0f), value);
 }
 
 void ARunnerCharacter::RestartLevel()
