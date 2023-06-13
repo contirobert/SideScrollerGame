@@ -11,6 +11,11 @@ class SIDESCROLLERGAME_API ARunnerCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
+	UPROPERTY(VisibleAnywhere)
+	class UCameraComponent* SideViewCamera;
+
+
+
 public:
 	// Sets default values for this character's properties
 	ARunnerCharacter();
@@ -26,4 +31,29 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+protected:
+	
+	void MoveRight(float value);
+
+public:
+
+	class UCameraComponent* GetSideViewCameraComponent() const
+	{
+		return SideViewCamera;
+	}
+
+	void RestartLevel();
+
+	UFUNCTION()
+		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp,
+			AActor* OtherActor, UPrimitiveComponent* OtherComp,
+			int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+private:
+
+	float zPosition;
+	FVector tempPos = FVector();
+
+	bool CanMove;
+	
 };
