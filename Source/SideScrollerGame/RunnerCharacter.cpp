@@ -50,6 +50,10 @@ void ARunnerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	tempPos = GetActorLocation();
+	tempPos.X -= 850.0f;
+	tempPos.Z = zPosition;
+	SideViewCamera->SetWorldLocation(tempPos);
 }
 
 // Called to bind functionality to input
