@@ -30,10 +30,10 @@ void ABaseLevel::Tick(float DeltaTime)
 
 UBoxComponent *ABaseLevel::GetTrigger()
 {
-    return nullptr;
+    return Trigger;
 }
 
 UBoxComponent *ABaseLevel::GetSpawnLocation()
 {
-    return nullptr;
+    return SpawnLocation;
 }
