@@ -10,7 +10,8 @@
 		}
 	],
 	"settings": {
-		"typescript.tsc.autoDetect": "off"
+		"typescript.tsc.autoDetect": "off",
+		"UEIntellisenseFixes.compiler.intellisenseMode": "macos-clang-arm64"
 	},
 	"extensions": {
 		"recommendations": [
